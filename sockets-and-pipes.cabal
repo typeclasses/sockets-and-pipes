@@ -1,0 +1,123 @@
+cabal-version: 2.0
+build-type: Simple
+
+name: sockets-and-pipes
+version: 0
+synopsis: Support for the Sockets and Pipes book
+category: HTTP, Network, Streaming, Text
+
+description:
+    Some utilities that support the
+    <https://leanpub.com/sockets-and-pipes Sockets and Pipes>
+    book:
+    .
+        * "SocketsAndPipes.Serve"
+    .
+    This package also contains re-exports from all the libraries
+    covered by /Sockets and Pipes/:
+    .
+        * __<https://hackage.haskell.org/package/ascii ascii>__ -
+          "ASCII", "ASCII.Char"
+        * __<https://hackage.haskell.org/package/aeson aeson>__ -
+          "Data.Aeson"
+        * __<https://hackage.haskell.org/package/async async>__ -
+          "Control.Concurrent.Async"
+        * __<https://hackage.haskell.org/package/base base>__ -
+          "Control.Monad",
+          "Data.Char",
+          "Data.Foldable",
+          "Data.Int",
+          "Data.Word",
+          "System.IO",
+          "System.Timeout"
+        * __<https://hackage.haskell.org/package/blaze-html blaze-html>__ -
+          "Text.Blaze.Html",
+          "Text.Blaze.Html5",
+          "Text.Blaze.Html5.Attributes",
+          "Text.Blaze.Html.Renderer.Utf8"
+        * __<https://hackage.haskell.org/package/bytestring bytestring>__ -
+          "Data.ByteString",
+          "Data.ByteString.Builder",
+          "Data.ByteString.Char8",
+          "Data.ByteString.Lazy"
+        * __<https://hackage.haskell.org/package/network network>__ -
+          "Network.Socket",
+          "Network.Socket.ByteString",
+          "Network.Socket.ByteString.Lazy"
+        * __<https://hackage.haskell.org/package/safe-exceptions safe-exceptions>__ -
+          "Control.Exception.Safe"
+        * __<https://hackage.haskell.org/package/text text>__ -
+          "Data.Text",
+          "Data.Text.Encoding",
+          "Data.Text.Lazy",
+          "Data.Text.Lazy.Builder",
+          "Data.Text.Lazy.Builder.Int",
+          "Data.Text.Lazy.Encoding",
+          "Data.Text.IO"
+        * __<https://hackage.haskell.org/package/time time>__ -
+          "Data.Time"
+
+library
+    default-language: Haskell2010
+    ghc-options: -Wall
+    hs-source-dirs: src
+    exposed-modules: SocketsAndPipes.Serve
+
+    build-depends: ascii ^>= 1.0
+    reexported-modules: ASCII, ASCII.Char
+
+    build-depends: aeson ^>= 1.5
+    reexported-modules: Data.Aeson
+
+    build-depends: async ^>= 2.2
+    reexported-modules: Control.Concurrent.Async
+
+    build-depends: base ^>= 4.14
+    reexported-modules:
+        Control.Monad,
+        Data.Char,
+        Data.Foldable,
+        Data.Int,
+        Data.Word,
+        System.IO,
+        System.Timeout
+
+    build-depends: blaze-html ^>= 0.9
+    reexported-modules:
+        Text.Blaze.Html,
+        Text.Blaze.Html5,
+        Text.Blaze.Html5.Attributes,
+        Text.Blaze.Html.Renderer.Utf8
+
+    -- Update to 0.11 held back by blaze-html:
+    --    https://github.com/jaspervdj/blaze-html/issues/135
+    build-depends: bytestring ^>= 0.10
+    reexported-modules:
+        Data.ByteString,
+        Data.ByteString.Builder,
+        Data.ByteString.Char8,
+        Data.ByteString.Lazy
+
+    build-depends: network ^>= 3.1
+    reexported-modules:
+        Network.Socket,
+        Network.Socket.ByteString,
+        Network.Socket.ByteString.Lazy
+
+    build-depends: safe-exceptions ^>= 0.1
+    reexported-modules: Control.Exception.Safe
+
+    build-depends: text ^>= 1.2
+    reexported-modules:
+        Data.Text,
+        Data.Text.Encoding,
+        Data.Text.Lazy,
+        Data.Text.Lazy.Builder,
+        Data.Text.Lazy.Builder.Int,
+        Data.Text.Lazy.Encoding,
+        Data.Text.IO
+
+    -- Update to 1.11 held back by GHC.
+    --    As of GHC 9.0.1, it still comes with time-1.9.3
+    build-depends: time ^>= 1.9
+    reexported-modules: Data.Time
