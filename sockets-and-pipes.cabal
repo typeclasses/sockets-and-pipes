@@ -16,46 +16,47 @@ description:
     This package also contains re-exports from all the libraries
     covered by /Sockets and Pipes/:
     .
-        * __<https://hackage.haskell.org/package/ascii ascii>__ -
-          "ASCII", "ASCII.Char"
-        * __<https://hackage.haskell.org/package/aeson aeson>__ -
-          "Data.Aeson"
-        * __<https://hackage.haskell.org/package/async async>__ -
-          "Control.Concurrent.Async"
-        * __<https://hackage.haskell.org/package/base base>__ -
-          "Control.Monad",
-          "Data.Char",
-          "Data.Foldable",
-          "Data.Int",
-          "Data.Word",
-          "System.IO",
-          "System.Timeout"
-        * __<https://hackage.haskell.org/package/blaze-html blaze-html>__ -
-          "Text.Blaze.Html",
-          "Text.Blaze.Html5",
-          "Text.Blaze.Html5.Attributes",
-          "Text.Blaze.Html.Renderer.Utf8"
-        * __<https://hackage.haskell.org/package/bytestring bytestring>__ -
-          "Data.ByteString",
-          "Data.ByteString.Builder",
-          "Data.ByteString.Char8",
-          "Data.ByteString.Lazy"
-        * __<https://hackage.haskell.org/package/network network>__ -
-          "Network.Socket",
-          "Network.Socket.ByteString",
-          "Network.Socket.ByteString.Lazy"
-        * __<https://hackage.haskell.org/package/safe-exceptions safe-exceptions>__ -
-          "Control.Exception.Safe"
-        * __<https://hackage.haskell.org/package/text text>__ -
-          "Data.Text",
-          "Data.Text.Encoding",
-          "Data.Text.Lazy",
-          "Data.Text.Lazy.Builder",
-          "Data.Text.Lazy.Builder.Int",
-          "Data.Text.Lazy.Encoding",
-          "Data.Text.IO"
-        * __<https://hackage.haskell.org/package/time time>__ -
-          "Data.Time"
+        * __ascii__ -
+            "ASCII",
+            "ASCII.Char"
+        * __aeson__ -
+            "Data.Aeson"
+        * __async__ -
+            "Control.Concurrent.Async"
+        * __base__ -
+            "Control.Monad",
+            "Data.Char",
+            "Data.Foldable",
+            "Data.Int",
+            "Data.Word",
+            "System.IO",
+            "System.Timeout"
+        * __blaze-html__ -
+            "Text.Blaze.Html",
+            "Text.Blaze.Html5",
+            "Text.Blaze.Html5.Attributes",
+            "Text.Blaze.Html.Renderer.Utf8"
+        * __bytestring__ -
+            "Data.ByteString",
+            "Data.ByteString.Builder",
+            "Data.ByteString.Char8",
+            "Data.ByteString.Lazy"
+        * __network__ -
+            "Network.Socket",
+            "Network.Socket.ByteString",
+            "Network.Socket.ByteString.Lazy"
+        * __safe-exceptions__ -
+            "Control.Exception.Safe"
+        * __text__ -
+            "Data.Text",
+            "Data.Text.Encoding",
+            "Data.Text.Lazy",
+            "Data.Text.Lazy.Builder",
+            "Data.Text.Lazy.Builder.Int",
+            "Data.Text.Lazy.Encoding",
+            "Data.Text.IO"
+        * __time__ -
+            "Data.Time"
 
 library
     default-language: Haskell2010
