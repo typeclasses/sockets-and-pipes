@@ -63,7 +63,11 @@ library
     default-extensions: NamedFieldPuns, NumericUnderscores
     ghc-options: -Wall
     hs-source-dirs: src
+
     exposed-modules: SocketsAndPipes.Serve
+    other-modules:
+        SocketsAndPipes.Serve.Setup
+        SocketsAndPipes.Serve.Loop
 
     build-depends: ascii ^>= 1.0
     reexported-modules: ASCII, ASCII.Char
