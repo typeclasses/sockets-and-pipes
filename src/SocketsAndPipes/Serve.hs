@@ -4,10 +4,9 @@ module SocketsAndPipes.Serve
       {- * Example -} {- $example -}
     ) where
 
-import SocketsAndPipes.Serve.Setup ( withSocketOnPort )
-import SocketsAndPipes.Serve.Loop  ( run )
-
-import Network.Socket ( Socket, PortNumber )
+import SocketsAndPipes.Serve.Sockets ( Socket, PortNumber, peerSocket )
+import SocketsAndPipes.Serve.Setup   ( withSocketOnPort )
+import SocketsAndPipes.Serve.Loop    ( run )
 
 -- | The first argument to 'serve'.
 data ServeOptions =
@@ -25,7 +24,7 @@ serve ::
     -> IO b {- ^ An action that runs forever, perpetually listening for
                  incoming connections and running the @(Socket -> IO a)@
                  function each time a new client opens a connection. -}
-serve (ServeOnPort p) f = withSocketOnPort p (run f)
+serve (ServeOnPort p) f = withSocketOnPort p (run (f . peerSocket))
 
 {- $example
 

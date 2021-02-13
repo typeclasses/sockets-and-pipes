@@ -1,18 +1,20 @@
 module SocketsAndPipes.Serve.Setup ( withSocketOnPort ) where
 
+import SocketsAndPipes.Serve.Sockets
+  ( PortNumber, Socket, PassiveSocket (..), closePassiveSocket )
+
 import Control.Monad  ( (>=>), when )
 import Data.Foldable  ( asum )
 import Data.Function  ( on )
-import Network.Socket ( Socket, PortNumber )
 
 import qualified Control.Exception.Safe as Exception
 import qualified Data.List              as List
 import qualified Network.Socket         as Socket
 
-withSocketOnPort :: PortNumber -> (Socket -> IO a) -> IO a
-withSocketOnPort port = Exception.bracket (bindToPort port) Socket.close
+withSocketOnPort :: PortNumber -> (PassiveSocket -> IO a) -> IO a
+withSocketOnPort port = Exception.bracket (bindToPort port) closePassiveSocket
 
-bindToPort :: PortNumber -> IO Socket
+bindToPort :: PortNumber -> IO PassiveSocket
 bindToPort = addrsForPort >=> chooseAddrAndBind
 
 addrsForPort :: PortNumber -> IO [Socket.AddrInfo]
@@ -44,7 +46,7 @@ serverAddrHints =
         {- A "passive" socket is a socket that will be
            used to listen for incoming connections. -}
 
-chooseAddrAndBind :: [Socket.AddrInfo] -> IO Socket
+chooseAddrAndBind :: [Socket.AddrInfo] -> IO PassiveSocket
 chooseAddrAndBind =
     asum . map bindToAddr . List.sortBy (compare `on` addrPreference)
 
@@ -60,10 +62,10 @@ addrPreference addr =
     A lesser number indicates a more preferable address.
 -}
 
-bindToAddr :: Socket.AddrInfo -> IO Socket
+bindToAddr :: Socket.AddrInfo -> IO PassiveSocket
 bindToAddr addr =
     Exception.bracketOnError (Socket.openSocket addr) Socket.close $ \s ->
-        initServerSocket addr s *> return s
+        initServerSocket addr s *> return (PassiveSocket s)
 
 initServerSocket :: Socket.AddrInfo -> Socket -> IO ()
 initServerSocket addr s =

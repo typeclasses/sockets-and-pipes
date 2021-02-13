@@ -1,7 +1,9 @@
 {- |
+
     The 'forkBracket' function ensures that if the setup
     action completes, then no matter what else happens,
     exactly one of either 'onForkFail' or 'onThreadEnd' will run.
+
 -}
 module SocketsAndPipes.Serve.ForkBracket
     ( forkBracket, Cleanup (..), ThreadId ) where
