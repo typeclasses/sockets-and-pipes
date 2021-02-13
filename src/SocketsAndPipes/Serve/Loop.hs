@@ -1,26 +1,51 @@
 module SocketsAndPipes.Serve.Loop ( run ) where
 
+import SocketsAndPipes.Serve.ForkBracket
+
 import Control.Monad  ( forever )
 import Network.Socket ( Socket )
 
-import qualified Control.Concurrent     as Concurrent
-import qualified Control.Exception.Safe as Exception
-import qualified Network.Socket         as Socket
+import qualified Network.Socket as Socket
 
-run :: (Socket -> IO a) -> Socket -> IO b
-run server s = forever $ withNewClient s (forkFin server)
-
-withNewClient :: Socket -> (Socket -> IO a) -> IO a
-withNewClient s = Exception.bracketOnError (accept s) Socket.close
-
-accept :: Socket -> IO Socket
-accept s = Socket.accept s >>= \(s', _) -> return s'
-
-forkFin :: (Socket -> IO a) -> Socket -> IO ()
-forkFin f s = Concurrent.forkFinally (f s) (\_ -> fin s) *> return ()
+run ::
+    (Socket -> IO a) -- ^ What to do when a new client connects.
+    -> Socket -- ^ A passive socket that is listening for connections.
+    -> IO b
+run server s = forever (acceptAndFork s server)
 {- ^
-    Runs the function `f` in a new thread, and
-    closes the socket politely at the end.
+    Perpetually awaits new connections,
+    forking a new thread to handle each one.
+-}
+
+acceptAndFork ::
+    Socket -- ^ A passive socket that is listening for connections.
+    -> (Socket -> IO a) -- ^ What to do when a new client connects.
+    -> IO ThreadId
+acceptAndFork s = forkBracket (accept s) socketForkBracketCleanup
+{- ^
+    Waits until a new client shows up to connect to our server.
+    When a peer connects, the socket for talking to them will
+    be passed to the given function.
+-}
+
+socketForkBracketCleanup :: Cleanup Socket
+socketForkBracketCleanup = Cleanup{onForkFail, onThreadEnd}
+  where
+    onThreadEnd = -- At the end of the thread:
+        fin           -- Politely conclude the connection.
+
+    onForkFail =  -- If an exception occurs before the thread even starts:
+        Socket.close  -- Just close the socket abruptly.
+                      -- Since this happens on the main thread, we don't
+                      -- want to take the time to wait for a graceful close.
+
+accept ::
+    Socket -- ^ A passive socket that is listening for connections.
+    -> IO Socket
+accept s = Socket.accept s >>= \(s', _) -> return s'
+{- ^
+    Waits until a new client shows up to connect to our server.
+    Returns the socket that we use to talk to this particular peer.
 -}
 
 fin :: Socket -> IO ()

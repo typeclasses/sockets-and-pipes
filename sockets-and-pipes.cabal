@@ -147,7 +147,7 @@ description:
 
 library
     default-language: Haskell2010
-    default-extensions: NamedFieldPuns, NumericUnderscores
+    default-extensions: GADTs, NamedFieldPuns, NumericUnderscores
     ghc-options: -Wall
     hs-source-dirs: src
 
@@ -155,6 +155,7 @@ library
     other-modules:
         SocketsAndPipes.Serve.Setup
         SocketsAndPipes.Serve.Loop
+        SocketsAndPipes.Serve.ForkBracket
 
     build-depends: ascii ^>= 1.0
     reexported-modules: ASCII, ASCII.Char

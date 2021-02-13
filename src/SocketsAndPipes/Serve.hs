@@ -25,7 +25,7 @@ serve ::
     -> IO b {- ^ An action that runs forever, perpetually listening for
                  incoming connections and running the @(Socket -> IO a)@
                  function each time a new client opens a connection. -}
-serve (ServeOnPort p) s = withSocketOnPort p (run s)
+serve (ServeOnPort p) f = withSocketOnPort p (run f)
 
 {- $example
 
