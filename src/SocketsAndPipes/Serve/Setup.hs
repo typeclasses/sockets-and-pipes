@@ -57,7 +57,7 @@ addrPreference addr =
                                 accept both IPv4 and IPv6 connections. -}
         Socket.AF_INET  -> 2 {- IPv4 is next best, if IPv6 is not supported. -}
         _               -> 3 {- Other addressing schemes are unfamiliar. -}
-{-
+{- ^
     Assigns a ranking to each address, indicating our relative preference.
     A lesser number indicates a more preferable address.
 -}
