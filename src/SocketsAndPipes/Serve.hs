@@ -11,6 +11,8 @@ import SocketsAndPipes.Serve.Loop    ( run )
 -- | The first argument to 'serve'.
 data ServeOptions =
     ServeOnPort PortNumber
+{- This type is abstract so that we might add more options in
+   the future without disturbing the users of this library. -}
 
 port :: PortNumber -- ^ The port number that your server will listen on
      -> ServeOptions
