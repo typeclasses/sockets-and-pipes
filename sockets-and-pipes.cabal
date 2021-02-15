@@ -11,6 +11,12 @@ description:
     (available on <https://leanpub.com/sockets-and-pipes Leanpub>),
     as well as re-exports from all the libraries mentioned in the book.
     .
+    == Code in this package
+    .
+    Original contributions from this package:
+    .
+        * "SocketsAndPipes.Serve"
+    .
     == Chapters
     .
     List of modules that make a significant appearance in each chapter:
@@ -138,12 +144,6 @@ description:
         * Builder - "Data.Text.Lazy.Builder", "Data.Text.Lazy.Builder.Int"
     .
     __time__ - "Data.Time"
-    .
-    == Code in this package
-    .
-    Original contributions from this package:
-    .
-        * "SocketsAndPipes.Serve"
 
 library
     default-language: Haskell2010
