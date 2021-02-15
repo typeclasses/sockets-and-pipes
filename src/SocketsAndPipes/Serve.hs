@@ -2,6 +2,7 @@ module SocketsAndPipes.Serve
     ( {- * Serve -} serve,
       {- * Options -} ServeOptions, port
       {- * Example -} {- $example -}
+      {- * Alternatives -} {- $alternatives -}
     ) where
 
 import SocketsAndPipes.Serve.Sockets ( Socket, PortNumber, peerSocket )
@@ -43,5 +44,16 @@ And while the server is still running, test it on the command line
 like so:
 
 > $ curl http://localhost:8000
+
+-}
+
+{- $alternatives
+
+The 'serve' function here is somewhat narrowly tailored
+to fit our purposes in /Sockets and Pipes/.
+Some other packages have more expansive offerings:
+
+  * <https://hackage.haskell.org/package/network-simple network-simple>
+  * <https://hackage.haskell.org/package/network-run network-run>
 
 -}
