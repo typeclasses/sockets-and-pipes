@@ -1,11 +1,14 @@
 module SocketsAndPipes.Serve.Setup ( withSocketOnPort ) where
 
 import SocketsAndPipes.Serve.Sockets
-  ( PortNumber, Socket, PassiveSocket (..), closePassiveSocket )
+    ( PortNumber, Socket, PassiveSocket (..), closePassiveSocket )
 
-import Control.Monad  ( (>=>), when )
-import Data.Foldable  ( asum )
-import Data.Function  ( on )
+import SocketsAndPipes.Serve.Exceptions
+    ( BindFailed (..), AddrTried (..),
+      overException, firstSuccessOrAllExceptions )
+
+import Control.Monad ( (>=>), when )
+import Data.Function ( on )
 
 import qualified Control.Exception.Safe as Exception
 import qualified Data.List              as List
@@ -48,7 +51,8 @@ serverAddrHints =
 
 chooseAddrAndBind :: [Socket.AddrInfo] -> IO PassiveSocket
 chooseAddrAndBind =
-    asum . map bindToAddr . List.sortBy (compare `on` addrPreference)
+    firstSuccessOrAllExceptions BindFailed . map bindToAddr
+    . List.sortBy (compare `on` addrPreference)
 
 addrPreference :: Socket.AddrInfo -> Int
 addrPreference addr =
@@ -64,8 +68,9 @@ addrPreference addr =
 
 bindToAddr :: Socket.AddrInfo -> IO PassiveSocket
 bindToAddr addr =
-    Exception.bracketOnError (Socket.openSocket addr) Socket.close $ \s ->
-        initServerSocket addr s *> return (PassiveSocket s)
+    overException (AddrTried addr) $
+        Exception.bracketOnError (Socket.openSocket addr) Socket.close $ \s ->
+            initServerSocket addr s *> return (PassiveSocket s)
 
 initServerSocket :: Socket.AddrInfo -> Socket -> IO ()
 initServerSocket addr s =

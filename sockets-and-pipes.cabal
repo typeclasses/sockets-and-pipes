@@ -157,6 +157,7 @@ library
         SocketsAndPipes.Serve.Loop
         SocketsAndPipes.Serve.Sockets
         SocketsAndPipes.Serve.ForkBracket
+        SocketsAndPipes.Serve.Exceptions
 
     build-depends: ascii ^>= 1.0
     reexported-modules: ASCII, ASCII.Char
@@ -193,6 +194,8 @@ library
         Data.ByteString.Builder,
         Data.ByteString.Char8,
         Data.ByteString.Lazy
+
+    build-depends: containers ^>= 0.6
 
     build-depends: network ^>= 3.1
     reexported-modules:

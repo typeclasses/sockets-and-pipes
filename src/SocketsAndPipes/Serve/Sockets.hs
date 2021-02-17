@@ -14,6 +14,7 @@ module SocketsAndPipes.Serve.Sockets
       PortNumber,
 
       PassiveSocket (..), closePassiveSocket,
+                          passiveSocketAddress,
 
       PeerSocket    (..), closePeerSocketAbruptly,
                           closePeerSocketPolitely,
@@ -61,3 +62,6 @@ accept s =
     Waits until a new client shows up to connect to our server.
     Returns the socket that we use to talk to this particular peer.
 -}
+
+passiveSocketAddress :: PassiveSocket -> IO Socket.SockAddr
+passiveSocketAddress = Socket.getSocketName . passiveSocket
