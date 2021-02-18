@@ -147,6 +147,10 @@ description:
     .
     __time__ - "Data.Time"
 
+source-repository head
+    type:     git
+    location: git://github.com/joyofhaskell/sockets-and-pipes.git
+
 library
     default-language: Haskell2010
     default-extensions: GADTs, NamedFieldPuns, NumericUnderscores
