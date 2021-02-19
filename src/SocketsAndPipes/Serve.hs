@@ -6,12 +6,13 @@ module SocketsAndPipes.Serve
     ) where
 
 import SocketsAndPipes.Serve.Exceptions ( displayBindFailed )
-import SocketsAndPipes.Serve.Sockets    ( Socket, PortNumber,
+import SocketsAndPipes.Serve.Sockets    ( Socket, PortNumber, PassiveSocket,
                                           passiveSocketAddress, peerSocket )
 import SocketsAndPipes.Serve.Setup      ( withSocketOnPort )
 import SocketsAndPipes.Serve.Loop       ( run )
 
-import qualified Control.Exception.Safe as Exception
+import Control.Exception.Safe ( catch )
+
 import qualified Data.Text.Lazy.IO      as LT
 import qualified Data.Text.Lazy.Builder as TB
 import qualified System.IO              as IO
@@ -38,17 +39,25 @@ serve ::
                  the @(Socket -> IO ())@ function each time a new client
                  opens a connection. -}
 serve (ServeOnPort p) f =
-    withSocketOnPort p (\s -> printSuccess s *> run (f . peerSocket) s)
-    `Exception.catch` (\e -> print (displayBindFailed e))
+    go `catch` ifBindFailed
+
   where
-    printSuccess s =
-        passiveSocketAddress s >>= \a ->
-            print $
-                TB.fromString "The server is listening on address "
-                <> TB.fromString (show a)
+    go = withSocketOnPort p $ \s ->
+      do
+        print =<< displayBindSuccess s
+        run (f . peerSocket) s
+
+    ifBindFailed = print . displayBindFailed
 
 print :: TB.Builder -> IO ()
 print = LT.hPutStrLn IO.stderr . TB.toLazyText
+
+displayBindSuccess :: PassiveSocket -> IO TB.Builder
+displayBindSuccess s =
+    passiveSocketAddress s >>= \a ->
+        return $
+            TB.fromString "The server is listening on address "
+            <> TB.fromString (show a)
 
 {- $example
 
