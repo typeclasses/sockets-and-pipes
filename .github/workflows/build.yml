@@ -1,0 +1,42 @@
+on: [push]
+
+name: Build the 'sockets-and-pipes' library
+
+jobs:
+    build:
+        name: Build the package
+        runs-on: ${{ matrix.os }}
+
+        strategy:
+            matrix:
+                os: [ubuntu-latest, windows-latest, macos-latest]
+                ghc: ['8.10.3', '8.8.4', '8.6.5']
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Install Haskell
+              id: install-haskell
+              uses: haskell/actions/setup@v1
+              with:
+                  ghc-version: ${{ matrix.ghc }}
+
+            - name: Cache Haskell dependencies
+              uses: actions/cache@v2
+              with:
+                  key: 3-${{ runner.os }}-${{ matrix.ghc }}
+                  restore-keys: |
+                      2-${{ runner.os }}-${{ matrix.ghc }}
+                      ${{ runner.os }}-${{ matrix.ghc }}
+                  path: |
+                      ${{ steps.install-haskell.outputs.cabal-store }}
+
+            - name: Build the build program
+              run: |
+                  cd .github/workflows/build
+                  cabal install --install-method=copy --installdir=.
+
+            - name: Build 'sockets-and-pipes'
+              run: .github/workflows/build/build
+              env:
+                  ghc: ${{ matrix.ghc }}
