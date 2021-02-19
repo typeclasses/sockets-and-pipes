@@ -5,6 +5,8 @@ name: sockets-and-pipes
 version: 0.1
 synopsis: Support for the Sockets and Pipes book
 category: HTTP, Network, Streaming, Text
+license: Apache-2.0
+license-file: license.txt
 
 -- GHC 9.0 support is held back by the 'base' version; see comments below.
 tested-with: GHC == 8.10.3, GHC == 8.8.4, GHC == 8.6.5
