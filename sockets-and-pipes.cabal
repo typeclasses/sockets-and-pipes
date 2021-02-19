@@ -6,6 +6,9 @@ version: 0
 synopsis: Support for the Sockets and Pipes book
 category: HTTP, Network, Streaming, Text
 
+-- GHC 9.0 support is held back by the 'base' version; see comments below.
+tested-with: GHC == 8.10.3, GHC == 8.8.4, GHC == 8.6.5
+
 description:
     This package contains some utilities that support /Sockets and Pipes/
     (available on <https://leanpub.com/sockets-and-pipes Leanpub>),
@@ -168,13 +171,19 @@ library
     build-depends: ascii ^>= 1.0
     reexported-modules: ASCII, ASCII.Char
 
-    build-depends: aeson ^>= 1.5
+    build-depends: aeson ^>= 1.3 || ^>= 1.4 || ^>= 1.5
     reexported-modules: Data.Aeson
 
     build-depends: async ^>= 2.2
     reexported-modules: Control.Concurrent.Async
 
-    build-depends: base ^>= 4.13 || ^>= 4.14
+    build-depends: base ^>= 4.12 || ^>= 4.13 || ^>= 4.14
+        --
+        -- Update to 4.15 is held back by:
+        --
+        --   * network-3.1.2 introduced a dependency on the 'directory'
+        --     package, which does not yet support base-4.15.
+        --
     reexported-modules:
         Control.Monad,
         Data.Char,
@@ -192,18 +201,28 @@ library
         Text.Blaze.Html5.Attributes,
         Text.Blaze.Html.Renderer.Utf8
 
-    -- Update to 0.11 held back by blaze-html:
-    --    https://github.com/jaspervdj/blaze-html/issues/135
     build-depends: bytestring ^>= 0.10
+        --
+        -- Update to 0.11 is held back by:
+        --
+        --   * https://github.com/jaspervdj/blaze-html/issues/135
+        --
     reexported-modules:
         Data.ByteString,
         Data.ByteString.Builder,
         Data.ByteString.Char8,
         Data.ByteString.Lazy
 
-    build-depends: containers ^>= 0.6
+    build-depends: containers ^>= 0.5.7 || ^>= 0.6
 
-    build-depends: network ^>= 3.1
+    build-depends: network ^>= 3.1.2
+        --
+        -- Reasons for lower bounds:
+        --
+        --   * 3.1.1 introduced the 'gracefulClose' function.
+        --   * 3.1.1 series is deprecated due to flaw in 'gracefulClose'.
+        --   * 3.1.2 introduced the 'openSocket' function.
+        --
     reexported-modules:
         Network.Socket,
         Network.Socket.ByteString,
@@ -214,11 +233,16 @@ library
 
     build-depends: stm ^>= 2.5
     reexported-modules:
-        Control.Concurrent.STM
-      , Control.Concurrent.STM.TVar
-      , Control.Monad.STM
+        Control.Concurrent.STM,
+        Control.Concurrent.STM.TVar,
+        Control.Monad.STM
 
-    build-depends: text ^>= 1.2
+    build-depends: text ^>= 1.2.3
+        --
+        -- Reasons for lower bounds:
+        --
+        --   * 1.2.3 is the first version that works with base-4.12.
+        --
     reexported-modules:
         Data.Text,
         Data.Text.Encoding,
@@ -229,7 +253,10 @@ library
         Data.Text.Lazy.IO,
         Data.Text.IO
 
-    -- Update to 1.11 held back by GHC.
-    --    As of GHC 9.0.1, it still comes with time-1.9.3
-    build-depends: time ^>= 1.9
+    build-depends: time ^>= 1.9 || ^>= 1.10
+        --
+        -- Update to 1.11 is held back by:
+        --
+        --   * https://github.com/haskell/directory/issues/115
+        --
     reexported-modules: Data.Time
