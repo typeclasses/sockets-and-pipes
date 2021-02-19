@@ -2,7 +2,7 @@ cabal-version: 2.0
 build-type: Simple
 
 name: sockets-and-pipes
-version: 0
+version: 0.1
 synopsis: Support for the Sockets and Pipes book
 category: HTTP, Network, Streaming, Text
 
