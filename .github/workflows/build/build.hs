@@ -26,11 +26,13 @@ figureConstraints =
                       "time"       == "1.9"
 
     GHC 8  8  _   ->  "aeson"      ^>= "1.4"   <>
-                      "base"       ^>= "4.13"  <>
+                      "base"       ^>= "4.13"
+
+    GHC 8 10  _   ->  "base"       ^>= "4.14"  <>
                       "time"       ^>= "1.10"
 
-    GHC 8 10  _   ->  "aeson"      ^>= "1.5"   <>
-                      "base"       ^>= "4.14"  <>
+    GHC 9 0   _   ->  "aeson"      ^>= "1.5"   <>
+                      "base"       ^>= "4.15"  <>
                       "containers" ^>= "0.6"   <>
                       "time"       ^>= "1.11"
 
