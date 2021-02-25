@@ -24,11 +24,10 @@ jobs:
             - name: Cache Haskell dependencies
               uses: actions/cache@v2
               with:
-                  key: ${{ runner.os }}-${{ matrix.ghc }}-4
+                  key: ${{ runner.os }}-${{ matrix.ghc }}-5-${{ hashFiles('.github/workflows/build/build.hs') }}
                   restore-keys: |
-                      ${{ runner.os }}-
                       ${{ runner.os }}-${{ matrix.ghc }}-
-                      3-${{ runner.os }}-${{ matrix.ghc }}
+                      ${{ runner.os }}-
                   path: |
                       ${{ steps.install-haskell.outputs.cabal-store }}
 
