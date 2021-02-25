@@ -269,10 +269,5 @@ library
         Data.Text.Lazy.IO,
         Data.Text.IO
 
-    build-depends: time ^>= 1.9 || ^>= 1.10
-        --
-        -- Update to 1.11 is held back by:
-        --
-        --   * https://github.com/haskell/directory/issues/115
-        --
+    build-depends: time ^>= 1.9 || ^>= 1.10 || ^>= 1.11
     reexported-modules: Data.Time
