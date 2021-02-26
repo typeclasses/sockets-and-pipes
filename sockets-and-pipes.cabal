@@ -130,6 +130,7 @@ description:
     .
         * File handles - "System.IO"
         * Fundamental data types - "Data.Word", "Data.Int", "Data.Char"
+        * Integer conversions - "Data.Bits"
         * Miscellania - "System.Timeout", "Control.Monad",
               "Data.Foldable", "Data.List"
     .
@@ -195,6 +196,7 @@ library
     build-depends: base ^>= 4.12 || ^>= 4.13 || ^>= 4.14 || ^>= 4.15
     reexported-modules:
         Control.Monad,
+        Data.Bits,
         Data.Char,
         Data.Foldable,
         Data.Int,
