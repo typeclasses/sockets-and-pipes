@@ -172,7 +172,7 @@ source-repository head
 
 library
     default-language: Haskell2010
-    default-extensions: GADTs, NamedFieldPuns, NumericUnderscores
+    default-extensions: NamedFieldPuns
     ghc-options: -Wall
     hs-source-dirs: src
 
@@ -181,8 +181,11 @@ library
         SocketsAndPipes.Serve.Setup
         SocketsAndPipes.Serve.Loop
         SocketsAndPipes.Serve.Sockets
-        SocketsAndPipes.Serve.ForkBracket
         SocketsAndPipes.Serve.Exceptions
+        SocketsAndPipes.Serve.Log
+        SocketsAndPipes.Serve.OnError
+        SocketsAndPipes.Serve.Finally
+        SocketsAndPipes.Serve.Shutdown
 
     build-depends: ascii ^>= 1.0
     reexported-modules: ASCII, ASCII.Char

@@ -48,7 +48,7 @@ closePeerSocketPolitely s =
 -}
 
 finMilliseconds :: Int
-finMilliseconds = 5_000
+finMilliseconds = 5000
 {- ^
     Timeout for the 'fin' action.
     5 seconds = 5000 milliseconds

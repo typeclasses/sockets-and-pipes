@@ -141,7 +141,7 @@ listen s = Socket.listen s listenBacklog
 -}
 
 listenBacklog :: Int
-listenBacklog = 1_024
+listenBacklog = 1024
 {- ^
     The 'S.accept' function pulls sockets from a queue maintained by
     the operating system. This is the size we are requesting for that queue.

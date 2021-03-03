@@ -1,42 +1,51 @@
 module SocketsAndPipes.Serve.Loop ( run ) where
 
-import SocketsAndPipes.Serve.ForkBracket
-    ( forkBracket, Cleanup (..), ThreadId )
+import Control.Concurrent.Async       ( race_ )
+import Control.Monad                  ( forever )
 
-import SocketsAndPipes.Serve.Sockets
-    ( PeerSocket, PassiveSocket, accept,
-      closePeerSocketPolitely, closePeerSocketAbruptly )
-
-import Control.Monad ( forever )
+import SocketsAndPipes.Serve.OnError  ( OnError, bracketOnError, forkOnError )
+import SocketsAndPipes.Serve.Finally  ( finallyInterruptible )
+import SocketsAndPipes.Serve.Log      ( Write, writeException )
+import SocketsAndPipes.Serve.Shutdown ( withRunStateVar, waitForShutdown )
+import SocketsAndPipes.Serve.Sockets  ( PeerSocket, PassiveSocket, accept,
+                                        closePeerSocketPolitely,
+                                        closePeerSocketAbruptly )
 
 run ::
-    (PeerSocket -> IO a) -- ^ What to do when a new client connects.
-    -> PassiveSocket -- ^ A socket that is listening for connections.
-    -> IO b
-run server s = forever (acceptAndFork s server)
-{- ^
-    Perpetually awaits new connections,
-    forking a new thread to handle each one.
--}
-
-acceptAndFork ::
-    PassiveSocket -- ^ A socket that is listening for connections.
+    Write -- ^ How to write log messages
     -> (PeerSocket -> IO a) -- ^ What to do when a new client connects.
-    -> IO ThreadId
-acceptAndFork s = forkBracket (accept s) socketForkBracketCleanup
-{- ^
-    Waits until a new client shows up to connect to our server.
-    When a peer connects, the socket for talking to them will
-    be passed to the given function.
+    -> PassiveSocket -- ^ A socket that is listening for connections.
+    -> IO b -- ^ Perpetually awaits new connections, forking a new thread to handle each one.
+run write go s =
+  withRunStateVar $ \runStateVar ->
+    forever $
+      bracketOnError (accept s) ({-2-} logAndCloseAbruptly write) $ \peer ->
+        forkOnError ({-3-} logAndCloseAbruptly write peer) $
+          race_ (waitForShutdown runStateVar *> {-4-} closePeerSocketAbruptly peer) $
+            go peer `finallyInterruptible` {-1-} closePeerSocketPolitely peer
+
+{-
+
+Threads normally conclude with a graceful close of the peer socket. (1)
+
+Since the graceful close procedure is a network operation that potentially
+blocks for several seconds, exceptions are made in the following circumstances
+where the delay would be unacceptable:
+
+  * When a fork fails, thereby forcing the close to take place on the main thread,
+    which needs to stay free to accept connections responsively. (2)
+
+  * When the goal is to stop the forked thread as quickly as possible:
+
+      * If an asynchronous exception has been thrown to the forked thread. (3)
+
+      * If we're shutting down because an async exception has been thrown
+        to the main thread. (4)
+
 -}
 
-socketForkBracketCleanup :: Cleanup PeerSocket
-socketForkBracketCleanup = Cleanup{onForkFail, onThreadEnd}
-  where
-    onThreadEnd = -- At the end of the thread:
-        closePeerSocketPolitely -- Politely conclude the connection.
-
-    onForkFail = -- If an exception occurs before the thread even starts:
-        closePeerSocketAbruptly -- Just close the socket abruptly.
-            -- Since this happens on the main thread, we don't
-            -- want to take the time to wait for a graceful close.
+logAndCloseAbruptly :: Write -> PeerSocket -> OnError
+logAndCloseAbruptly write peer e =
+  do
+    closePeerSocketAbruptly peer
+    writeException write e
