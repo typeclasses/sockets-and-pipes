@@ -216,12 +216,7 @@ library
         Text.Blaze.Html5.Attributes,
         Text.Blaze.Html.Renderer.Utf8
 
-    build-depends: bytestring ^>= 0.10
-        --
-        -- Update to 0.11 is held back by:
-        --
-        --   * https://github.com/jaspervdj/blaze-html/issues/135
-        --
+    build-depends: bytestring ^>= 0.10 || ^>= 0.11
     reexported-modules:
         Data.ByteString,
         Data.ByteString.Builder,

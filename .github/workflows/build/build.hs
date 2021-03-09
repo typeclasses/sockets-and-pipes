@@ -21,6 +21,7 @@ figureConstraints =
   \case
     GHC 8  6  _   ->  "aeson"      == "1.3.0.0"   <>
                       "base"       == "4.12.0.0"  <>
+                      "bytestring" == "0.10.8.0"  <>
                       "containers" == "0.5.7.0"   <>
                       "network"    == "3.1.2.0"   <>
                       "time"       == "1.9"
@@ -33,6 +34,7 @@ figureConstraints =
 
     GHC 9 0   _   ->  "aeson"      ^>= "1.5"   <>
                       "base"       ^>= "4.15"  <>
+                      "bytestring" ^>= "0.11"  <>
                       "containers" ^>= "0.6"   <>
                       "time"       ^>= "1.11"
 
