@@ -103,16 +103,18 @@ description:
     |    |                      +----------------------------------+ threads                               |
     |    |                      | "Control.Monad.STM"              |                                       |
     +----+----------------------+----------------------------------+---------------------------------------+
-    | 11 | __Streaming__        |                                                                          |
-    +----+----------------------+                                                                          |
-    | 12 | __ListT IO__         |                                                                          |
-    +----+----------------------+                                                                          |
+    | 11 | __Streaming__        | "Data.ByteString.Builder"        | Encoding functions for chunked        |
+    |    |                      |                                  | HTTP message bodies                   |
+    +----+----------------------+----------------------------------+---------------------------------------+
+    | 12 | __ListT IO__         | "Pipes"                          | Representing files and HTTP message   |
+    |    |                      |                                  | bodies as I/O streams                 |
+    +----+----------------------+----------------------------------+---------------------------------------+
     | 13 | __Request parsing__  |                                                                          |
     +----+----------------------+                                                                          |
     | 14 | __Reading headers__  |                                                                          |
-    +----+----------------------+                 The remaining chapters are in progress.                  |
-    | 15 | __Body parsing__     |                                                                          |
     +----+----------------------+                                                                          |
+    | 15 | __Body parsing__     |                                                                          |
+    +----+----------------------+                 The remaining chapters are in progress.                  |
     | 16 | __Connection reuse__ |                                                                          |
     +----+----------------------+                                                                          |
     | 17 | __Producers and__    |                                                                          |
