@@ -34,7 +34,7 @@ figureConstraints =
     GHC 8 10  _   ->  "base"       ^>= "4.14"    <>
                       "time"       ^>= "1.10"
 
-    GHC 9 0   _   ->  "aeson"      ^>= "1.5"     <>
+    GHC 9 0   _   ->  "aeson"      ^>= "1.5.6.0" <>
                       "ascii"      ^>= "1.0.1.4" <>
                       "base"       ^>= "4.15"    <>
                       "bytestring" ^>= "0.11"    <>
