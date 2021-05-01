@@ -49,7 +49,7 @@ figureConstraints =
                       "pipes"           ^>= "4.3.15"   <>
                       "safe-exceptions" ^>= "0.1.7.1"  <>
                       "text"            ^>= "1.2.4.1"  <>
-                      "time"            ^>= "1.11"
+                      "time"            ^>= "1.11.1.2"
 
 a ^>= b = [ ConstraintCaret (Package a) (Version b) ]
 
