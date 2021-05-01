@@ -103,11 +103,10 @@ description:
     |    |                      +----------------------------------+ threads                               |
     |    |                      | "Control.Monad.STM"              |                                       |
     +----+----------------------+----------------------------------+---------------------------------------+
-    | 11 | __Streaming__        | "Data.ByteString.Builder"        | Encoding functions for chunked        |
-    |    |                      |                                  | HTTP message bodies                   |
+    | 11 | __Streaming__        | "Data.ByteString.Builder"        | Chunked HTTP message encoding         |
     +----+----------------------+----------------------------------+---------------------------------------+
-    | 12 | __ListT IO__         | "Pipes"                          | Representing files and HTTP message   |
-    |    |                      |                                  | bodies as I/O streams                 |
+    | 12 | __ListT IO__         | "Pipes"                          | Representing files and chunked HTTP   |
+    |    |                      |                                  | message bodies as I/O streams         |
     +----+----------------------+----------------------------------+---------------------------------------+
     | 13 | __Request parsing__  |                                                                          |
     +----+----------------------+                                                                          |
