@@ -20,6 +20,7 @@ test = testConstraints . figureConstraints
 figureConstraints =
   \case
     GHC 8  6  _   ->  "aeson"      == "1.3.0.0"  <>
+                      "ascii"      == "1.0.0.0"  <>
                       "base"       == "4.12.0.0" <>
                       "bytestring" == "0.10.8.0" <>
                       "containers" == "0.5.7.0"  <>
@@ -34,6 +35,7 @@ figureConstraints =
                       "time"       ^>= "1.10"
 
     GHC 9 0   _   ->  "aeson"      ^>= "1.5"     <>
+                      "ascii"      ^>= "1.0.1.4" <>
                       "base"       ^>= "4.15"    <>
                       "bytestring" ^>= "0.11"    <>
                       "containers" ^>= "0.6"     <>
