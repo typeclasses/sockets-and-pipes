@@ -19,31 +19,31 @@ test = testConstraints . figureConstraints
 
 figureConstraints =
   \case
-    GHC 8  6  _   ->  "aeson"      == "1.3.0.0"  <>
-                      "ascii"      == "1.0.0.0"  <>
-                      "async"      == "2.2.1"    <>
-                      "base"       == "4.12.0.0" <>
-                      "blaze-html" == "0.9.0.0"  <>
-                      "bytestring" == "0.10.8.0" <>
-                      "containers" == "0.5.7.0"  <>
-                      "network"    == "3.1.2.0"  <>
-                      "pipes"      == "4.3.9"    <>
+    GHC 8  6  _   ->  "aeson"      == "1.3.0.0"   <>
+                      "ascii"      == "1.0.0.0"   <>
+                      "async"      == "2.2.1"     <>
+                      "base"       == "4.12.0.0"  <>
+                      "blaze-html" == "0.9.0.0"   <>
+                      "bytestring" == "0.10.8.0"  <>
+                      "containers" == "0.5.7.0"   <>
+                      "network"    == "3.1.2.0"   <>
+                      "pipes"      == "4.3.9"     <>
                       "time"       == "1.9"
 
-    GHC 8  8  _   ->  "aeson"      ^>= "1.4"     <>
+    GHC 8  8  _   ->  "aeson"      ^>= "1.4"      <>
                       "base"       ^>= "4.13"
 
-    GHC 8 10  _   ->  "base"       ^>= "4.14"    <>
+    GHC 8 10  _   ->  "base"       ^>= "4.14"     <>
                       "time"       ^>= "1.10"
 
-    GHC 9 0   _   ->  "aeson"      ^>= "1.5.6.0" <>
-                      "ascii"      ^>= "1.0.1.4" <>
-                      "async"      ^>= "2.2.3"   <>
-                      "base"       ^>= "4.15"    <>
-                      "blaze-html" ^>= "0.9.1.2" <>
-                      "bytestring" ^>= "0.11"    <>
-                      "containers" ^>= "0.6"     <>
-                      "pipes"      ^>= "4.3.15"  <>
+    GHC 9 0   _   ->  "aeson"      ^>= "1.5.6.0"  <>
+                      "ascii"      ^>= "1.0.1.4"  <>
+                      "async"      ^>= "2.2.3"    <>
+                      "base"       ^>= "4.15"     <>
+                      "blaze-html" ^>= "0.9.1.2"  <>
+                      "bytestring" ^>= "0.11.1.0" <>
+                      "containers" ^>= "0.6"      <>
+                      "pipes"      ^>= "4.3.15"   <>
                       "time"       ^>= "1.11"
 
 a ^>= b = [ ConstraintCaret (Package a) (Version b) ]
