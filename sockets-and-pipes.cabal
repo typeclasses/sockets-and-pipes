@@ -159,6 +159,10 @@ description:
         * "Network.Socket.ByteString.Lazy" -
             Socket read/write operations with lazy byte strings
     .
+    __pipes__
+    .
+        * "Pipes" - ListT
+    .
     __safe-exceptions__ - "Control.Exception.Safe"
     .
     __stm__ - "Control.Monad.STM", "Control.Concurrent.STM.TVar"
@@ -242,6 +246,15 @@ library
         Network.Socket,
         Network.Socket.ByteString,
         Network.Socket.ByteString.Lazy
+
+    build-depends: pipes ^>= 4.3.9
+        --
+        -- Reasons for lower bounds:
+        --   * Among pipes releases that have a tight upper bound on the
+        --     base library, 4.3.9 is the earliest that supports base-4.12.
+        --
+    reexported-modules:
+        Pipes
 
     build-depends: safe-exceptions ^>= 0.1
     reexported-modules: Control.Exception.Safe
