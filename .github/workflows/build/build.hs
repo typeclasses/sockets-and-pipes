@@ -29,6 +29,7 @@ figureConstraints =
                       "network"          == "3.1.2.0"  <>
                       "pipes"            == "4.3.9"    <>
                       "safe-exceptions"  == "0.1.7.0"  <>
+                      "text"             == "1.2.3.0"  <>
                       "time"             == "1.9"
 
     GHC 8  8  _   ->  "aeson"           ^>= "1.4"      <>
@@ -47,6 +48,7 @@ figureConstraints =
                       "network"         ^>= "3.1.2.1"  <>
                       "pipes"           ^>= "4.3.15"   <>
                       "safe-exceptions" ^>= "0.1.7.1"  <>
+                      "text"            ^>= "1.2.4.1"  <>
                       "time"            ^>= "1.11"
 
 a ^>= b = [ ConstraintCaret (Package a) (Version b) ]
