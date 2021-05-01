@@ -42,7 +42,7 @@ figureConstraints =
                       "base"       ^>= "4.15"     <>
                       "blaze-html" ^>= "0.9.1.2"  <>
                       "bytestring" ^>= "0.11.1.0" <>
-                      "containers" ^>= "0.6"      <>
+                      "containers" ^>= "0.6.4.1"  <>
                       "pipes"      ^>= "4.3.15"   <>
                       "time"       ^>= "1.11"
 
