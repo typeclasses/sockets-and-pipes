@@ -20,7 +20,6 @@ test = testConstraints . figureConstraints
 figureConstraints =
   \case
     GHC 8  6  _   ->  "aeson"            == "1.3.0.0"  <>
-                      "ascii"            == "1.0.0.0"  <>
                       "async"            == "2.2.1"    <>
                       "base"             == "4.12.0.0" <>
                       "blaze-html"       == "0.9.0.0"  <>
@@ -39,7 +38,6 @@ figureConstraints =
                       "time"            ^>= "1.10"
 
     GHC 9 0   _   ->  "aeson"           ^>= "1.5.6.0"  <>
-                      "ascii"           ^>= "1.0.1.4"  <>
                       "async"           ^>= "2.2.3"    <>
                       "base"            ^>= "4.15"     <>
                       "blaze-html"      ^>= "0.9.1.2"  <>
