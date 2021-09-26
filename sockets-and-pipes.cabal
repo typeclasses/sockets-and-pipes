@@ -235,7 +235,7 @@ library
 
     build-depends: network ^>= 3.1.2
         --
-        -- Reasons for lower bounds:
+        -- Reasons for lower bound:
         --
         --   * 3.1.1 introduced the 'gracefulClose' function.
         --   * 3.1.1 series is deprecated due to flaw in 'gracefulClose'.
@@ -248,7 +248,7 @@ library
 
     build-depends: pipes ^>= 4.3.9
         --
-        -- Reasons for lower bounds:
+        -- Reasons for lower bound:
         --   * Among pipes releases that have a tight upper bound on the
         --     base library, 4.3.9 is the earliest that supports base-4.12.
         --
@@ -257,7 +257,7 @@ library
 
     build-depends: safe-exceptions ^>= 0.1.7.0
         --
-        -- Reasons for lower bounds:
+        -- Reasons for lower bound:
         --
         --   * 0.1.7.0 is the first version that works with base-4.12.
         --
@@ -271,7 +271,7 @@ library
 
     build-depends: text ^>= 1.2.3
         --
-        -- Reasons for lower bounds:
+        -- Reasons for lower bound:
         --
         --   * 1.2.3 is the first version that works with base-4.12.
         --
