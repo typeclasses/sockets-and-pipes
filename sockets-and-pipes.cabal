@@ -10,8 +10,6 @@ license-file: license.txt
 author: Chris Martin, Julie Moronuki
 maintainer: Joy of Haskell <hello@joyofhaskell.com>
 
-tested-with: GHC == 9.0.1, GHC == 8.10.3, GHC == 8.8.4, GHC == 8.6.5
-
 description:
     This package contains some utilities that support /Sockets and Pipes/
     (available on <https://leanpub.com/sockets-and-pipes Leanpub>),
