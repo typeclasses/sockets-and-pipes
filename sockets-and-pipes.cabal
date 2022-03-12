@@ -1,30 +1,34 @@
-cabal-version: 2.0
-build-type: Simple
+cabal-version: 3.0
 
 name: sockets-and-pipes
 version: 0.3
+
 synopsis: Support for the Sockets and Pipes book
 category: HTTP, Network, Streaming, Text
+
 license: Apache-2.0
 license-file: license.txt
+
 author: Chris Martin, Julie Moronuki
 maintainer: Joy of Haskell <hello@joyofhaskell.com>
+
+build-type: Simple
 
 description:
     This package contains some utilities that support /Sockets and Pipes/
     (available on <https://leanpub.com/sockets-and-pipes Leanpub>),
     as well as re-exports from all the libraries mentioned in the book.
-    .
+
     == Code in this package
-    .
+
     Original contributions from this package:
-    .
+
         * "SocketsAndPipes.Serve"
-    .
+
     == Chapters
-    .
+
     List of modules that make a significant appearance in each chapter:
-    .
+
     +----+----------------------+----------------------------------+---------------------------------------+
     |    |   Chapter            |          Module                  |               Purpose                 |
     +====+======================+==================================+=======================================+
@@ -117,59 +121,59 @@ description:
     | 17 | __Producers and__    |                                                                          |
     |    | __Consumers__        |                                                                          |
     +----+----------------------+--------------------------------------------------------------------------+
-    .
+
     == Libraries
-    .
+
     Re-exported modules, grouped by the package that each module originally comes from:
-    .
+
     __ascii__ - "ASCII", "ASCII.Char"
-    .
+
     __aeson__ - "Data.Aeson"
-    .
+
     __async__ - "Control.Concurrent.Async"
-    .
+
     __base__
-    .
+
         * File handles - "System.IO"
         * Fundamental data types - "Data.Word", "Data.Int", "Data.Char"
         * Integer conversions - "Data.Bits"
         * Miscellania - "System.Timeout", "Control.Monad",
               "Data.Foldable", "Data.List"
-    .
+
     __blaze-html__ - "Text.Blaze.Html", "Text.Blaze.Html5",
           "Text.Blaze.Html5.Attributes", "Text.Blaze.Html.Renderer.Utf8"
-    .
+
     __bytestring__
-    .
+
         * Strict - "Data.ByteString"
         * Lazy - "Data.ByteString.Lazy"
         * Builder - "Data.ByteString.Builder"
         * "Data.ByteString.Char8" -
             This is included mostly to discuss why we don't use it.
-    .
+
     __network__
-    .
+
         * "Network.Socket" -
             The Socket type, operations for opening and closing sockets
         * "Network.Socket.ByteString" -
             Socket read/write operations with strict byte strings
         * "Network.Socket.ByteString.Lazy" -
             Socket read/write operations with lazy byte strings
-    .
+
     __pipes__
-    .
+
         * "Pipes" - ListT
-    .
+
     __safe-exceptions__ - "Control.Exception.Safe"
-    .
+
     __stm__ - "Control.Monad.STM", "Control.Concurrent.STM.TVar"
-    .
+
     __text__
-    .
+
         * Strict - "Data.Text", "Data.Text.Encoding", "Data.Text.IO"
         * Lazy - "Data.Text.Lazy", "Data.Text.Lazy.Encoding", "Data.Text.Lazy.IO"
         * Builder - "Data.Text.Lazy.Builder", "Data.Text.Lazy.Builder.Int"
-    .
+
     __time__ - "Data.Time"
 
 source-repository head
