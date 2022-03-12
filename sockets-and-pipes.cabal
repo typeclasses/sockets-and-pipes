@@ -206,13 +206,20 @@ library
         --
     reexported-modules: ASCII, ASCII.Char
 
-    build-depends: aeson ^>= 1.3 || ^>= 1.4 || ^>= 1.5
+    build-depends: aeson ^>= 2.0
+        --
+        -- Reasons for lower bound:
+        --
+        --   * 2.0 changed the 'Object' type alias from 'HashMap'
+        --     to 'KeyMap'. It is difficult to support both 1.*
+        --     and the newer 2.*, so we require the latter.
+        --
     reexported-modules: Data.Aeson
 
     build-depends: async ^>= 2.2
     reexported-modules: Control.Concurrent.Async
 
-    build-depends: base ^>= 4.12 || ^>= 4.13 || ^>= 4.14 || ^>= 4.15
+    build-depends: base ^>= 4.12 || ^>= 4.13 || ^>= 4.14 || ^>= 4.15 || ^>= 4.16
     reexported-modules:
         Control.Concurrent,
         Control.Monad,

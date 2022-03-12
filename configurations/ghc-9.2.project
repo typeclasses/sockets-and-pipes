@@ -1,5 +1,5 @@
 packages: ./sockets-and-pipes.cabal
 
 constraints:
-    aeson == 2.0.1.*
-  , base == 4.13.*
+    aeson == 2.0.3.*
+  , base == 4.16.*

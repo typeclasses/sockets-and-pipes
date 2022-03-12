@@ -1,7 +1,7 @@
 packages: ./sockets-and-pipes.cabal
 
 constraints:
-    aeson >= 1.5.6.0
+    aeson == 2.0.2.*
   , async >= 2.2.3
   , base == 4.15.*
   , blaze-html >= 0.9.1.2
