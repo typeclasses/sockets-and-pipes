@@ -99,7 +99,7 @@ description:
     |    |                      +----------------------------------+                                       |
     |    |                      | "Text.Blaze.Html.Renderer.Utf8"  |                                       |
     |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Data.Aeson"                     | Building a JSON response body         |
+    |    |                      | "Data.Aeson", "Data.Aeson.Key"   | Building a JSON response body         |
     +----+----------------------+----------------------------------+---------------------------------------+
     | 10 | __Change__           | "Control.Concurrent.STM.TVar"    | Shared state for request-handling     |
     |    |                      +----------------------------------+ threads                               |
@@ -214,7 +214,7 @@ library
         --     to 'KeyMap'. It is difficult to support both 1.*
         --     and the newer 2.*, so we require the latter.
         --
-    reexported-modules: Data.Aeson
+    reexported-modules: Data.Aeson, Data.Aeson.Key
 
     build-depends: async ^>= 2.2
     reexported-modules: Control.Concurrent.Async
