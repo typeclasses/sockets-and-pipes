@@ -128,7 +128,7 @@ description:
 
     __ascii__ - "ASCII", "ASCII.Char"
 
-    __aeson__ - "Data.Aeson"
+    __aeson__ - "Data.Aeson", "Data.Aeson.Key"
 
     __async__ - "Control.Concurrent.Async"
 
