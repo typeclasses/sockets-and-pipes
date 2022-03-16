@@ -128,7 +128,7 @@ description:
 
     __ascii__ - "ASCII", "ASCII.Char"
 
-    __aeson__ - "Data.Aeson", "Data.Aeson.Key"
+    __aeson__ - "Data.Aeson", "Data.Aeson.Key", "Data.Aeson.KeyMap"
 
     __async__ - "Control.Concurrent.Async"
 
@@ -214,7 +214,7 @@ library
         --     to 'KeyMap'. It is difficult to support both 1.*
         --     and the newer 2.*, so we require the latter.
         --
-    reexported-modules: Data.Aeson, Data.Aeson.Key
+    reexported-modules: Data.Aeson, Data.Aeson.Key, Data.Aeson.KeyMap
 
     build-depends: async ^>= 2.2
     reexported-modules: Control.Concurrent.Async
