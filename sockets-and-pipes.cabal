@@ -197,12 +197,13 @@ library
         SocketsAndPipes.Serve.Finally
         SocketsAndPipes.Serve.Shutdown
 
-    build-depends: ascii ^>= 1.1.1
+    build-depends: ascii ^>= 1.1.2
         --
         -- Reasons for lower bound:
         --
         --   * 1.1.1.0 introduced the 'isDigit' and 'isLetter'
         --     functions in the 'ASCII' module.
+        --   * 1.1.2.0 introduced the 'Digit' type.
         --
     reexported-modules: ASCII, ASCII.Char
 
