@@ -34,8 +34,8 @@ description:
     +====+======================+==================================+=======================================+
     |  1 | __Handles__          | "System.IO"                      | Writing to a file                     |
     |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Control.Exception.Safe"         | Using `bracket` to ensure             |
-    |    |                      |                                  | the file handle is closed             |
+    |    |                      | "Pipes.Safe"                     | Using `SafeT` to ensure that          |
+    |    |                      |                                  | file handles are closed               |
     +----+----------------------+----------------------------------+---------------------------------------+
     |  2 | __Chunks__           | "Data.Text"                      | `Text` is a chunk of characters       |
     |    |                      +----------------------------------+---------------------------------------+
@@ -270,6 +270,14 @@ library
         --
     reexported-modules:
         Pipes
+
+    build-depends: pipes-safe ^>= 2.3
+        --
+        -- Reasons for lower bound:
+        --   * 2.3 is the earliest release that supports base-4.12.
+        --
+    reexported-modules:
+        Pipes.Safe
 
     build-depends: safe-exceptions ^>= 0.1.7.0
         --
