@@ -217,10 +217,15 @@ library
         --
     reexported-modules: Data.Aeson, Data.Aeson.Key, Data.Aeson.KeyMap
 
-    build-depends: async ^>= 2.2
+    build-depends: async ^>= 2.2.2
+        --
+        -- Reasons for lower bound:
+        --
+        --   * 2.2.2 is the earliest version that supports base-4.13.
+        --
     reexported-modules: Control.Concurrent.Async
 
-    build-depends: base ^>= 4.12 || ^>= 4.13 || ^>= 4.14 || ^>= 4.15 || ^>= 4.16
+    build-depends: base ^>= 4.13 || ^>= 4.14 || ^>= 4.15 || ^>= 4.16
     reexported-modules:
         Control.Concurrent,
         Control.Monad,
@@ -247,7 +252,12 @@ library
         Data.ByteString.Char8,
         Data.ByteString.Lazy
 
-    build-depends: containers ^>= 0.5.7 || ^>= 0.6
+    build-depends: containers ^>= 0.5.7.1 || ^>= 0.6
+        --
+        -- Reasons for lower bound:
+        --
+        --   * aeson 2.0.0.0 requires containers >= 0.5.7.1
+        --
 
     build-depends: network ^>= 3.1.2
         --
@@ -262,11 +272,11 @@ library
         Network.Socket.ByteString,
         Network.Socket.ByteString.Lazy
 
-    build-depends: pipes ^>= 4.3.9
+    build-depends: pipes ^>= 4.3.10
         --
         -- Reasons for lower bound:
         --   * Among pipes releases that have a tight upper bound on the
-        --     base library, 4.3.9 is the earliest that supports base-4.12.
+        --     base library, 4.3.10 is the earliest that supports base-4.13.
         --
     reexported-modules:
         Pipes
@@ -293,11 +303,11 @@ library
         Control.Concurrent.STM.TVar,
         Control.Monad.STM
 
-    build-depends: text ^>= 1.2.3
+    build-depends: text ^>= 1.2.4
         --
         -- Reasons for lower bound:
         --
-        --   * 1.2.3 is the first version that works with base-4.12.
+        --   * 1.2.4 is the first version that works with base-4.13.
         --
     reexported-modules:
         Data.Text,
@@ -309,5 +319,5 @@ library
         Data.Text.Lazy.IO,
         Data.Text.IO
 
-    build-depends: time ^>= 1.9 || ^>= 1.10 || ^>= 1.11
+    build-depends: time ^>= 1.9.3 || ^>= 1.10 || ^>= 1.11
     reexported-modules: Data.Time
