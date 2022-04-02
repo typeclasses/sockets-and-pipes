@@ -32,6 +32,8 @@ description:
     +----+----------------------+----------------------------------+---------------------------------------+
     |    |   Chapter            |          Module                  |               Purpose                 |
     +====+======================+==================================+=======================================+
+    |    | __Setup__            | "Relude"                         | Miscellaneous                         |
+    +----+----------------------+----------------------------------+---------------------------------------+
     |  1 | __Handles__          | "System.IO"                      | Writing to a file                     |
     |    |                      +----------------------------------+---------------------------------------+
     |    |                      | "Pipes.Safe"                     | Using `SafeT` to ensure that          |
@@ -288,6 +290,10 @@ library
         --
     reexported-modules:
         Pipes.Safe
+
+    build-depends: relude ^>= 1.0
+    reexported-modules:
+        Relude
 
     build-depends: safe-exceptions ^>= 0.1.7.0
         --
