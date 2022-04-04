@@ -3,3 +3,8 @@ packages: ./sockets-and-pipes.cabal
 constraints:
     aeson == 2.0.3.*
   , base == 4.16.*
+
+source-repository-package
+    type: git
+    location: https://github.com/kowainik/relude
+    tag: fcb32257a37e34a48f70ddd55424394de4bb025c
