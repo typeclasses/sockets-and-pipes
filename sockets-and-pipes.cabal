@@ -327,5 +327,5 @@ library
         Data.Text.Lazy.IO,
         Data.Text.IO
 
-    build-depends: ^>= 1.10 || ^>= 1.11
+    build-depends: time ^>= 1.10 || ^>= 1.11
     reexported-modules: Data.Time
