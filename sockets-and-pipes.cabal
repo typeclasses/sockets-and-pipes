@@ -285,10 +285,10 @@ library
     reexported-modules:
         Pipes
 
-    build-depends: pipes-safe ^>= 2.3
+    build-depends: pipes-safe ^>= 2.3.4
         --
         -- Reasons for lower bound:
-        --   * 2.3 is the earliest release that supports base-4.12.
+        --   * 2.3.4 adds the 'allocate' and 'openFile' functions.
         --
     reexported-modules:
         Pipes.Safe

@@ -9,6 +9,7 @@ constraints:
   , containers == 0.6.0.1
   , network == 3.1.2.0
   , pipes == 4.3.10
+  , pipes-safe == 2.3.4
   , safe-exceptions == 0.1.7.0
   , text == 1.2.4.0
   , time == 1.10.*
