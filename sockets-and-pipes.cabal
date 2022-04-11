@@ -255,12 +255,11 @@ library
         Data.ByteString.Char8,
         Data.ByteString.Lazy
 
-    build-depends: containers ^>= 0.6.0.1 || ^>= 0.6
+    build-depends: containers ^>= 0.6.2.1
         --
         -- Reasons for lower bound:
         --
-        --   * aeson 2.0.0.0 requires containers >= 0.5.7.1
-        --   * https://github.com/kowainik/relude/issues/404
+        --   * pipes-safe 2.3.4 requires containers >= 0.6.2.1
         --
 
     build-depends: network ^>= 3.1.2
