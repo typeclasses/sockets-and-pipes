@@ -311,11 +311,11 @@ library
         Control.Concurrent.STM.TVar,
         Control.Monad.STM
 
-    build-depends: text ^>= 1.2.4
+    build-depends: text ^>= 1.2.4.1
         --
         -- Reasons for lower bound:
         --
-        --   * 1.2.4 is the first version that works with base-4.13.
+        --   * 1.2.4 is the first version that works with base-4.14.
         --
     reexported-modules:
         Data.Text,

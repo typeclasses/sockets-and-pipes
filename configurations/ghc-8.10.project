@@ -11,5 +11,5 @@ constraints:
   , pipes == 4.3.10
   , pipes-safe == 2.3.4
   , safe-exceptions == 0.1.7.0
-  , text == 1.2.4.0
+  , text == 1.2.4.1
   , time == 1.10.*
