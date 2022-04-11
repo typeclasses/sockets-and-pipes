@@ -237,6 +237,7 @@ library
         Data.Int,
         Data.List,
         Data.Word,
+        Prelude,
         System.IO,
         System.Timeout
 
