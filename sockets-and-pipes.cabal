@@ -290,7 +290,8 @@ library
         --   * 2.3.4 adds the 'allocate' and 'openFile' functions.
         --
     reexported-modules:
-        Pipes.Safe
+        Pipes.Safe,
+        Pipes.Safe.Prelude
 
     build-depends: relude ^>= 1.0
     reexported-modules:
