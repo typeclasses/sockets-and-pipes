@@ -207,7 +207,7 @@ library
         --     functions in the 'ASCII' module.
         --   * 1.1.2.0 introduced the 'Digit' type.
         --
-    reexported-modules: ASCII, ASCII.Char
+    reexported-modules: ASCII, ASCII.Char, ASCII.Decimal
 
     build-depends: aeson ^>= 2.0
         --
