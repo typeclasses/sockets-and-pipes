@@ -36,7 +36,7 @@ description:
     +----+----------------------+----------------------------------+---------------------------------------+
     |  1 | __Handles__          | "System.IO"                      | Writing to a file                     |
     |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Pipes.Safe"                     | Using `SafeT` to ensure that          |
+    |    |                      | "Control.Monad.Trans.Resource"   | Using `ResourceT` to ensure that      |
     |    |                      |                                  | file handles are closed               |
     +----+----------------------+----------------------------------+---------------------------------------+
     |  2 | __Chunks__           | "Data.Text"                      | `Text` is a chunk of characters       |
@@ -109,7 +109,7 @@ description:
     +----+----------------------+----------------------------------+---------------------------------------+
     | 11 | __Streaming__        | "Data.ByteString.Builder"        | Chunked HTTP message encoding         |
     +----+----------------------+----------------------------------+---------------------------------------+
-    | 12 | __ListT IO__         | "Pipes"                          | Representing files and chunked HTTP   |
+    | 12 | __ListT IO__         | "List.Transformer"               | Representing files and chunked HTTP   |
     |    |                      |                                  | message bodies as I/O streams         |
     +----+----------------------+----------------------------------+---------------------------------------+
     | 13 | __Request parsing__  |                                                                          |
@@ -153,6 +153,10 @@ description:
         * "Data.ByteString.Char8" -
             This is included mostly to discuss why we don't use it.
 
+    __list-transformer__
+
+        * "List.Transformer" - ListT
+
     __network__
 
         * "Network.Socket" -
@@ -162,9 +166,7 @@ description:
         * "Network.Socket.ByteString.Lazy" -
             Socket read/write operations with lazy byte strings
 
-    __pipes__
-
-        * "Pipes" - ListT
+    __resourcet__ - "Control.Monad.Trans.Resource"
 
     __safe-exceptions__ - "Control.Exception.Safe"
 
@@ -257,11 +259,10 @@ library
         Data.ByteString.Lazy
 
     build-depends: containers ^>= 0.6.2.1
-        --
-        -- Reasons for lower bound:
-        --
-        --   * pipes-safe 2.3.4 requires containers >= 0.6.2.1
-        --
+
+    build-depends: list-transformer ^>= 1.0.7
+    reexported-modules:
+        List.Transformer
 
     build-depends: network ^>= 3.1.2
         --
@@ -276,27 +277,13 @@ library
         Network.Socket.ByteString,
         Network.Socket.ByteString.Lazy
 
-    build-depends: pipes ^>= 4.3.10
-        --
-        -- Reasons for lower bound:
-        --   * Among pipes releases that have a tight upper bound on the
-        --     base library, 4.3.10 is the earliest that supports base-4.13.
-        --
-    reexported-modules:
-        Pipes
-
-    build-depends: pipes-safe ^>= 2.3.4
-        --
-        -- Reasons for lower bound:
-        --   * 2.3.4 adds the 'allocate' and 'openFile' functions.
-        --
-    reexported-modules:
-        Pipes.Safe,
-        Pipes.Safe.Prelude
-
     build-depends: relude ^>= 1.0
     reexported-modules:
         Relude
+
+    build-depends: resourcet ^>= 1.2.4
+    reexported-modules:
+        Control.Monad.Trans.Resource
 
     build-depends: safe-exceptions ^>= 0.1.7.0
         --
