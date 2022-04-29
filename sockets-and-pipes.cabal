@@ -201,7 +201,7 @@ library
         SocketsAndPipes.Serve.Finally
         SocketsAndPipes.Serve.Shutdown
 
-    build-depends: ascii ^>= 1.2.0.0
+    build-depends: ascii ^>= 1.2.1.0
         --
         -- Reasons for lower bound:
         --
@@ -209,6 +209,7 @@ library
         --     functions in the 'ASCII' module.
         --   * 1.1.2.0 introduced the 'Digit' type.
         --   * 1.2.0.0 added 'Lift' instances for 'Digit'
+        --   * 1.2.1.0 added 'word8ToDigitMaybe'
         --
     reexported-modules: ASCII, ASCII.Char, ASCII.Decimal
 
