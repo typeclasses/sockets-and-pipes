@@ -209,7 +209,7 @@ library
         --     functions in the 'ASCII' module.
         --   * 1.1.2.0 introduced the 'Digit' type.
         --   * 1.2.0.0 added 'Lift' instances for 'Digit'
-        --   * 1.2.1.0 added 'word8ToDigitMaybe'
+        --   * 1.2.1.0 added 'toDigitMaybe'
         --
     reexported-modules: ASCII, ASCII.Char, ASCII.Decimal
 
