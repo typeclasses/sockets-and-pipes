@@ -260,6 +260,8 @@ library
         Data.ByteString.Lazy
 
     build-depends: containers ^>= 0.6.2.1
+    reexported-modules:
+        Data.Map.Strict
 
     build-depends: list-transformer ^>= 1.0.7
     reexported-modules:
