@@ -267,6 +267,10 @@ library
     reexported-modules:
         Data.Map.Strict
 
+    build-depends: filepath
+    reexported-modules:
+        System.FilePath
+
     build-depends: list-transformer ^>= 1.0.7
     reexported-modules:
         List.Transformer
