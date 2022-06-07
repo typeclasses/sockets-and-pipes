@@ -336,13 +336,5 @@ library
     build-depends: time ^>= 1.10 || ^>= 1.11
     reexported-modules: Data.Time
 
-    build-depends: transformers ^>= 0.5.6.0
-        --
-        -- Reasons for lower bound:
-        --
-        --   * 0.5.6.0 changed the type of the 'except' function
-        --
-    reexported-modules: Control.Monad.Trans.Except
-
     build-depends: unfork ^>= 1.0
     reexported-modules: Unfork
