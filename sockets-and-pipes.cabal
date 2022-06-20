@@ -295,7 +295,7 @@ library
         Network.Socket.ByteString,
         Network.Socket.ByteString.Lazy
 
-    build-depends: relude ^>= 1.0
+    build-depends: relude ^>= 1.0 || ^>= 1.1
     reexported-modules:
         Relude
 
