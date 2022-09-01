@@ -21,6 +21,8 @@ description:
 
     Please read the "SocketsAndPipes.Syllabus".
 
+    This release is for the sixth draft of the book, released September 2022.
+
 source-repository head
     type:     git
     location: git://github.com/joyofhaskell/sockets-and-pipes.git
