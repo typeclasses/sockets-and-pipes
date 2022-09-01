@@ -293,7 +293,15 @@ library
     reexported-modules:
         Network.Socket,
         Network.Socket.ByteString,
-        Network.Socket.ByteString.Lazy
+
+    build-depends: network-simple ^>= 0.4.2
+        --
+        -- Reasons for lower bound:
+        --
+        --   * 0.4.2 changed the type of 'serve'.
+        --
+    reexported-modules:
+        Network.Simple.TCP
 
     build-depends: relude ^>= 1.0 || ^>= 1.1
     reexported-modules:
