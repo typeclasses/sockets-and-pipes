@@ -15,9 +15,8 @@ maintainer: Joy of Haskell <hello@joyofhaskell.com>
 build-type: Simple
 
 description:
-    This package contains some utilities that support /Sockets and Pipes/
-    (available on <https://leanpub.com/sockets-and-pipes Leanpub>),
-    as well as re-exports from all the libraries mentioned in the book.
+    This package re-exports from all the libraries mentioned in
+    /Sockets and Pipes/ (available on <https://leanpub.com/sockets-and-pipes Leanpub>).
 
     Please read the "SocketsAndPipes.Syllabus".
 
