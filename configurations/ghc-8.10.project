@@ -10,8 +10,6 @@ constraints:
   , bytestring == 0.10.8.1
   , containers == 0.6.2.1
   , network == 3.1.2.0
-  , pipes == 4.3.10
-  , pipes-safe == 2.3.4
   , relude == 1.0.*
   , safe-exceptions == 0.1.7.0
   , time == 1.10.*
