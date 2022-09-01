@@ -5,5 +5,4 @@ constraints:
   , attoparsec == 0.14.*
   , base == 4.16.*
   , relude == 1.1.*
-  , text == 2.0.*
   , time == 1.12.*

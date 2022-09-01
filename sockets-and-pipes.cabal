@@ -83,7 +83,7 @@ library
     build-depends: stm ^>= 2.5
     reexported-modules: Control.Concurrent.STM, Control.Concurrent.STM.TVar, Control.Monad.STM
 
-    build-depends: text ^>= 1.2.4.1 || ^>= 2.0
+    build-depends: text ^>= 1.2.4.1
     reexported-modules: Data.Text, Data.Text.Encoding, Data.Text.IO
     reexported-modules: Data.Text.Lazy, Data.Text.Lazy.Encoding, Data.Text.Lazy.IO
     reexported-modules: Data.Text.Lazy.Builder, Data.Text.Lazy.Builder.Int
