@@ -19,166 +19,7 @@ description:
     (available on <https://leanpub.com/sockets-and-pipes Leanpub>),
     as well as re-exports from all the libraries mentioned in the book.
 
-    == Code in this package
-
-    Original contributions from this package:
-
-        * "SocketsAndPipes.Serve"
-
-    == Chapters
-
-    List of modules that make a significant appearance in each chapter:
-
-    +----+----------------------+----------------------------------+---------------------------------------+
-    |    |   Chapter            |          Module                  |               Purpose                 |
-    +====+======================+==================================+=======================================+
-    |    | __Setup__            | "Relude"                         | Miscellaneous                         |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    |  1 | __Handles__          | "System.IO"                      | Writing to a file                     |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Control.Monad.Trans.Resource"   | Using `ResourceT` to ensure that      |
-    |    |                      |                                  | file handles are closed               |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    |  2 | __Chunks__           | "Data.Text"                      | `Text` is a chunk of characters       |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Data.Text.IO"                   | Reading and writing files using       |
-    |    |                      |                                  | `Text` instead of `String`            |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    |  3 | __Bytes__            | "Data.Word"                      | What a byte is                        |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Data.ByteString"                | `ByteString` is a chunk of bytes      |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Data.Text.Encoding"             | Conversions between `ByteString`      |
-    |    |                      |                                  | and `Text`                            |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Data.String"                    | How `ByteString` works with           |
-    |    |                      +----------------------------------+ `OverloadedStrings`                   |
-    |    |                      | "Data.ByteString.Char8"          |                                       |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "System.IO"                      | Putting `Handle`s into binary mode    |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    |  4 | __Sockets__          | "Network.Socket"                 | Opening and closing sockets           |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Network.Socket.ByteString"      | Writing to and reading from sockets   |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "System.Timeout"                 | Giving up quickly when a service      |
-    |    |                      |                                  | does not respond                      |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    |  5 | __HTTP__             | "ASCII"                          | Expressing HTTP messages as strings   |
-    |    |                      +----------------------------------+                                       |
-    |    |                      | "ASCII.Char"                     |                                       |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "SocketsAndPipes.Serve"          | Our first rudimentary web server      |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    |  6 | __HTTP types__       | "Data.ByteString"                | Defining datatypes for the            |
-    |    |                      +----------------------------------+ parts of an HTTP message              |
-    |    |                      | "Data.ByteString.Lazy"           |                                       |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    |  7 | __Encoding__         | "Data.Text.Lazy"                 | Efficient string concatenations       |
-    |    |                      +----------------------------------+                                       |
-    |    |                      | "Data.Text.Lazy.Builder"         |                                       |
-    |    |                      +----------------------------------+                                       |
-    |    |                      | "Data.ByteString.Builder"        |                                       |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Data.Time"                      | Simple performance testing            |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Data.Foldable"                  | Encoding repetitions with `foldMap`   |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    |  8 | __Responding__       | "Network.Socket.ByteString.Lazy" | Sending responses constructed by      |
-    |    |                      |                                  | bytestring `Builder`                  |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "SocketsAndPipes.Serve"          | New web server using the              |
-    |    |                      |                                  | encoding functions                    |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Data.Int"                       | Contrasting `Integer`, `Int`,         |
-    |    |                      |                                  | and `Int64`                           |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    |  9 | __Content types__    | "Data.Text.Lazy.Builder.Int"     | Building a text response body         |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Text.Blaze.Html"                | Building an HTML response body        |
-    |    |                      +----------------------------------+                                       |
-    |    |                      | "Text.Blaze.Html5"               |                                       |
-    |    |                      +----------------------------------+                                       |
-    |    |                      | "Text.Blaze.Html.Renderer.Utf8"  |                                       |
-    |    |                      +----------------------------------+---------------------------------------+
-    |    |                      | "Data.Aeson", "Data.Aeson.Key"   | Building a JSON response body         |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    | 10 | __Change__           | "Control.Concurrent.STM.TVar"    | Shared state for request-handling     |
-    |    |                      +----------------------------------+ threads                               |
-    |    |                      | "Control.Monad.STM"              |                                       |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    | 11 | __Streaming__        | "Data.ByteString.Builder"        | Chunked HTTP message encoding         |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    | 12 | __ListT IO__         | "List.Transformer"               | Representing files and chunked HTTP   |
-    |    |                      |                                  | message bodies as I/O streams         |
-    +----+----------------------+----------------------------------+---------------------------------------+
-    | 13 | __Request parsing__  |                                                                          |
-    +----+----------------------+                                                                          |
-    | 14 | __Reading headers__  |                                                                          |
-    +----+----------------------+                                                                          |
-    | 15 | __Body parsing__     |                                                                          |
-    +----+----------------------+                 The remaining chapters are in progress.                  |
-    | 16 | __Connection reuse__ |                                                                          |
-    +----+----------------------+                                                                          |
-    | 17 | __Producers and__    |                                                                          |
-    |    | __Consumers__        |                                                                          |
-    +----+----------------------+--------------------------------------------------------------------------+
-
-    == Libraries
-
-    Re-exported modules, grouped by the package that each module originally comes from:
-
-    __ascii__ - "ASCII", "ASCII.Char"
-
-    __aeson__ - "Data.Aeson", "Data.Aeson.Key", "Data.Aeson.KeyMap"
-
-    __async__ - "Control.Concurrent.Async"
-
-    __base__
-
-        * File handles - "System.IO"
-        * Fundamental data types - "Data.Word", "Data.Int", "Data.Char"
-        * Integer conversions - "Data.Bits"
-        * Miscellania - "System.Timeout", "Control.Monad",
-              "Data.Foldable", "Data.List"
-
-    __blaze-html__ - "Text.Blaze.Html", "Text.Blaze.Html5",
-          "Text.Blaze.Html5.Attributes", "Text.Blaze.Html.Renderer.Utf8"
-
-    __bytestring__
-
-        * Strict - "Data.ByteString"
-        * Lazy - "Data.ByteString.Lazy"
-        * Builder - "Data.ByteString.Builder"
-        * "Data.ByteString.Char8" -
-            This is included mostly to discuss why we don't use it.
-
-    __list-transformer__
-
-        * "List.Transformer" - ListT
-
-    __network__
-
-        * "Network.Socket" -
-            The Socket type, operations for opening and closing sockets
-        * "Network.Socket.ByteString" -
-            Socket read/write operations with strict byte strings
-        * "Network.Socket.ByteString.Lazy" -
-            Socket read/write operations with lazy byte strings
-
-    __resourcet__ - "Control.Monad.Trans.Resource"
-
-    __safe-exceptions__ - "Control.Exception.Safe"
-
-    __stm__ - "Control.Monad.STM", "Control.Concurrent.STM.TVar"
-
-    __text__
-
-        * Strict - "Data.Text", "Data.Text.Encoding", "Data.Text.IO"
-        * Lazy - "Data.Text.Lazy", "Data.Text.Lazy.Encoding", "Data.Text.Lazy.IO"
-        * Builder - "Data.Text.Lazy.Builder", "Data.Text.Lazy.Builder.Int"
-
-    __time__ - "Data.Time"
+    Please read the "SocketsAndPipes.Syllabus".
 
 source-repository head
     type:     git
@@ -186,149 +27,66 @@ source-repository head
 
 library
     default-language: Haskell2010
-    default-extensions: NamedFieldPuns
-    ghc-options: -Wall
+    default-extensions: NoImplicitPrelude
+    ghc-options: -Wall -fno-warn-unused-imports
     hs-source-dirs: src
+    exposed-modules: SocketsAndPipes.Syllabus
 
     build-depends: ascii ^>= 1.2.3.0
-        --
-        -- Reasons for lower bound:
-        --
-        --   * 1.1.1.0 introduced the 'isDigit' and 'isLetter'
-        --     functions in the 'ASCII' module.
-        --   * 1.1.2.0 introduced the 'Digit' type.
-        --   * 1.2.0.0 added 'Lift' instances for 'Digit'
-        --   * 1.2.1.0 added 'toDigitMaybe'
-        --   * 1.2.3.0 added 'isVisible'
-        --
     reexported-modules: ASCII, ASCII.Char, ASCII.Decimal
 
     build-depends: aeson ^>= 2.0
-        --
-        -- Reasons for lower bound:
-        --
-        --   * 2.0 changed the 'Object' type alias from 'HashMap'
-        --     to 'KeyMap'. It is difficult to support both 1.*
-        --     and the newer 2.*, so we require the latter.
-        --
     reexported-modules: Data.Aeson, Data.Aeson.Key, Data.Aeson.KeyMap
 
     build-depends: async ^>= 2.2.2
-        --
-        -- Reasons for lower bound:
-        --
-        --   * 2.2.2 is the earliest version that supports base-4.13.
-        --
     reexported-modules: Control.Concurrent.Async
 
     build-depends: attoparsec
     reexported-modules: Data.Attoparsec.ByteString
 
     build-depends: base ^>= 4.14 || ^>= 4.15 || ^>= 4.16
-    reexported-modules:
-        Control.Concurrent,
-        Control.Monad,
-        Data.Bits,
-        Data.Char,
-        Data.Foldable,
-        Data.Int,
-        Data.List,
-        Data.Word,
-        Prelude,
-        System.IO,
-        System.Timeout
+    reexported-modules: Control.Concurrent, Control.Monad, Data.Char, Prelude, System.IO
 
     build-depends: blaze-html ^>= 0.9
-    reexported-modules:
-        Text.Blaze.Html,
-        Text.Blaze.Html5,
-        Text.Blaze.Html5.Attributes,
-        Text.Blaze.Html.Renderer.Utf8
+    reexported-modules: Text.Blaze.Html, Text.Blaze.Html5, Text.Blaze.Html5.Attributes, Text.Blaze.Html.Renderer.Utf8
 
     build-depends: bytestring ^>= 0.10 || ^>= 0.11
-    reexported-modules:
-        Data.ByteString,
-        Data.ByteString.Builder,
-        Data.ByteString.Char8,
-        Data.ByteString.Lazy
+    reexported-modules: Data.ByteString, Data.ByteString.Builder, Data.ByteString.Char8, Data.ByteString.Lazy
 
     build-depends: containers ^>= 0.6.2.1
-    reexported-modules:
-        Data.Map.Strict
+    reexported-modules: Data.Map.Strict
 
     build-depends: directory ^>= 1.2.3 || ^>= 1.3
-        -- Reasons for lower bound:
-        --
-        --   * 1.2.3.0 introduced the XdgDirectory type
-    reexported-modules:
-        System.Directory
+    reexported-modules: System.Directory
 
     build-depends: filepath
-    reexported-modules:
-        System.FilePath
+    reexported-modules: System.FilePath
 
     build-depends: list-transformer ^>= 1.0.7
-    reexported-modules:
-        List.Transformer
+    reexported-modules: List.Transformer
 
     build-depends: network ^>= 3.1.2
-        --
-        -- Reasons for lower bound:
-        --
-        --   * 3.1.1 introduced the 'gracefulClose' function.
-        --   * 3.1.1 series is deprecated due to flaw in 'gracefulClose'.
-        --   * 3.1.2 introduced the 'openSocket' function.
-        --
-    reexported-modules:
-        Network.Socket,
-        Network.Socket.ByteString,
+    reexported-modules: Network.Socket, Network.Socket.ByteString,
 
     build-depends: network-simple ^>= 0.4.2
-        --
-        -- Reasons for lower bound:
-        --
-        --   * 0.4.2 changed the type of 'serve'.
-        --
-    reexported-modules:
-        Network.Simple.TCP
+    reexported-modules: Network.Simple.TCP
 
     build-depends: relude ^>= 1.0 || ^>= 1.1
-    reexported-modules:
-        Relude
+    reexported-modules: Relude
 
     build-depends: resourcet ^>= 1.2.4
-    reexported-modules:
-        Control.Monad.Trans.Resource
+    reexported-modules: Control.Monad.Trans.Resource
 
     build-depends: safe-exceptions ^>= 0.1.7.0
-        --
-        -- Reasons for lower bound:
-        --
-        --   * 0.1.7.0 is the first version that works with base-4.12.
-        --
     reexported-modules: Control.Exception.Safe
 
     build-depends: stm ^>= 2.5
-    reexported-modules:
-        Control.Concurrent.STM,
-        Control.Concurrent.STM.TVar,
-        Control.Monad.STM
+    reexported-modules: Control.Concurrent.STM, Control.Concurrent.STM.TVar, Control.Monad.STM
 
     build-depends: text ^>= 1.2.4.1
-        --
-        -- Reasons for lower bound:
-        --
-        --   * 1.2.4 is the first version that works with base-4.14.
-        --
-    reexported-modules:
-        Data.Text,
-        Data.Text.Encoding,
-        Data.Text.Lazy,
-        Data.Text.Lazy.Builder,
-        Data.Text.Lazy.Builder.Int,
-        Data.Text.Lazy.Encoding,
-        Data.Text.Lazy.IO,
-        Data.Text.IO
+    reexported-modules: Data.Text, Data.Text.Encoding, Data.Text.IO
+    reexported-modules: Data.Text.Lazy, Data.Text.Lazy.Encoding, Data.Text.Lazy.IO
+    reexported-modules: Data.Text.Lazy.Builder, Data.Text.Lazy.Builder.Int
 
     build-depends: time ^>= 1.10 || ^>= 1.11
     reexported-modules: Data.Time
