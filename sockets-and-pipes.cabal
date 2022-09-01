@@ -41,7 +41,7 @@ library
     build-depends: async ^>= 2.2.2
     reexported-modules: Control.Concurrent.Async
 
-    build-depends: attoparsec
+    build-depends: attoparsec ^>= 0.13 || ^>= 0.14
     reexported-modules: Data.Attoparsec.ByteString
 
     build-depends: base ^>= 4.14 || ^>= 4.15 || ^>= 4.16
@@ -59,7 +59,7 @@ library
     build-depends: directory ^>= 1.2.3 || ^>= 1.3
     reexported-modules: System.Directory
 
-    build-depends: filepath
+    build-depends: filepath ^>= 1.4
     reexported-modules: System.FilePath
 
     build-depends: list-transformer ^>= 1.0.7
@@ -83,12 +83,12 @@ library
     build-depends: stm ^>= 2.5
     reexported-modules: Control.Concurrent.STM, Control.Concurrent.STM.TVar, Control.Monad.STM
 
-    build-depends: text ^>= 1.2.4.1
+    build-depends: text ^>= 1.2.4.1 || ^>= 2.0
     reexported-modules: Data.Text, Data.Text.Encoding, Data.Text.IO
     reexported-modules: Data.Text.Lazy, Data.Text.Lazy.Encoding, Data.Text.Lazy.IO
     reexported-modules: Data.Text.Lazy.Builder, Data.Text.Lazy.Builder.Int
 
-    build-depends: time ^>= 1.10 || ^>= 1.11
+    build-depends: time ^>= 1.10 || ^>= 1.11 || ^>= 1.12
     reexported-modules: Data.Time
 
     build-depends: unfork ^>= 1.0
