@@ -1,6 +1,0 @@
-packages: ./sockets-and-pipes.cabal
-
-constraints:
-    base == 4.17.*
-  , text == 2.0.*
-  , time == 1.12.*
