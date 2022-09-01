@@ -190,17 +190,6 @@ library
     ghc-options: -Wall
     hs-source-dirs: src
 
-    exposed-modules: SocketsAndPipes.Serve
-    other-modules:
-        SocketsAndPipes.Serve.Setup
-        SocketsAndPipes.Serve.Loop
-        SocketsAndPipes.Serve.Sockets
-        SocketsAndPipes.Serve.Exceptions
-        SocketsAndPipes.Serve.Log
-        SocketsAndPipes.Serve.OnError
-        SocketsAndPipes.Serve.Finally
-        SocketsAndPipes.Serve.Shutdown
-
     build-depends: ascii ^>= 1.2.3.0
         --
         -- Reasons for lower bound:
