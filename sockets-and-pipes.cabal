@@ -33,7 +33,7 @@ library
     hs-source-dirs: src
     exposed-modules: SocketsAndPipes.Syllabus
 
-    build-depends: ascii ^>= 1.4
+    build-depends: ascii ^>= 1.5
     reexported-modules: ASCII, ASCII.Char, ASCII.Decimal
 
     build-depends: aeson ^>= 2.0
