@@ -22,8 +22,9 @@ depOverrides = new: old: {
     ascii-predicates = new.callPackage ./nix/ascii-predicates.nix {};
     ascii-superset = new.callPackage ./nix/ascii-superset.nix {};
     ascii-th = new.callPackage ./nix/ascii-th.nix {};
-    doctest = new.callPackage ./nix/doctest.nix {};
-    relude = new.callPackage ./nix/relude.nix {};
+    attoparsec-run = new.callPackage ./nix/attoparsec-run.nix {};
+    # doctest = new.callPackage ./nix/doctest.nix {};
+    # relude = new.callPackage ./nix/relude.nix {};
     unfork = new.callPackage ./nix/unfork.nix {};
 };
 
