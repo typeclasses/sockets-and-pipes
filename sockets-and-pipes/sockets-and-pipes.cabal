@@ -54,27 +54,76 @@ library
       , unfork ^>= 1.0
 
     reexported-modules:
-      , ASCII
-      , ASCII.Char
-      , ASCII.Decimal
-      , Control.Concurrent
-      , Control.Concurrent.Async
-      , Control.Concurrent.STM
-      , Control.Concurrent.STM.TVar
-      , Control.Exception.Safe
-      , Control.Monad
-      , Control.Monad.STM
-      , Control.Monad.Trans.Resource
+
+      -- aeson
       , Data.Aeson
       , Data.Aeson.Key
       , Data.Aeson.KeyMap
+
+      -- ascii
+      , ASCII
+      , ASCII.Char
+      , ASCII.Decimal
+
+      -- async
+      , Control.Concurrent.Async
+
+      -- attoparsec
       , Data.Attoparsec.ByteString
+
+      -- base
+      , Control.Concurrent
+      , Control.Monad
+      , Data.Char
+      , Prelude
+      , System.IO
+
+      -- blaze-html
+      , Text.Blaze.Html
+      , Text.Blaze.Html.Renderer.Utf8
+      , Text.Blaze.Html5
+      , Text.Blaze.Html5.Attributes
+
+      -- bytestring
       , Data.ByteString
       , Data.ByteString.Builder
       , Data.ByteString.Char8
       , Data.ByteString.Lazy
-      , Data.Char
+
+      -- containers
       , Data.Map.Strict
+
+      -- directory
+      , System.Directory
+
+      -- filepath
+      , System.FilePath
+
+      -- list-transformer
+      , List.Transformer
+
+      -- network
+      , Network.Socket
+      , Network.Socket.ByteString
+
+      -- network-simple
+      , Network.Simple.TCP
+
+      -- relude
+      , Relude
+
+      -- resourcet
+      , Control.Monad.Trans.Resource
+
+      -- safe-exceptions
+      , Control.Exception.Safe
+
+      -- stm
+      , Control.Concurrent.STM
+      , Control.Concurrent.STM.TVar
+      , Control.Monad.STM
+
+      -- text
       , Data.Text
       , Data.Text.Encoding
       , Data.Text.IO
@@ -83,18 +132,9 @@ library
       , Data.Text.Lazy.Builder.Int
       , Data.Text.Lazy.Encoding
       , Data.Text.Lazy.IO
+
+      -- time
       , Data.Time
-      , List.Transformer
-      , Network.Simple.TCP
-      , Network.Socket
-      , Network.Socket.ByteString
-      , Prelude
-      , Relude
-      , System.Directory
-      , System.FilePath
-      , System.IO
-      , Text.Blaze.Html
-      , Text.Blaze.Html.Renderer.Utf8
-      , Text.Blaze.Html5
-      , Text.Blaze.Html5.Attributes
+
+      -- unfork
       , Unfork
