@@ -32,7 +32,7 @@ library
     exposed-modules: SocketsAndPipes.Syllabus
 
     build-depends:
-      , ascii ^>= 1.5.1
+      , ascii ^>= 1.5.2
       , aeson ^>= 2.0
       , async ^>= 2.2.2
       , attoparsec ^>= 0.14.4

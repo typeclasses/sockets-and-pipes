@@ -4,8 +4,8 @@
 }:
 mkDerivation {
   pname = "ascii";
-  version = "1.5.1.0";
-  sha256 = "34121c181be2741b8561891826d66df01fef8cb9f28cd1c95f77013367ee4205";
+  version = "1.5.2.0";
+  sha256 = "f85d7b5467cd1d8d1be07dc3559bf0c97a2ff0d5b1d9f85772d1ec968790b248";
   libraryHaskellDepends = [
     ascii-case ascii-caseless ascii-char ascii-group ascii-numbers
     ascii-predicates ascii-superset ascii-th base bytestring text
