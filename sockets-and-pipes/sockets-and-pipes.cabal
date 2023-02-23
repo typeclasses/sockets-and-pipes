@@ -105,6 +105,13 @@ library
       -- filepath
       , System.FilePath
 
+      -- hash-addressed
+      , HashAddressed.Directory
+      , HashAddressed.HashFunction
+
+      -- mtl
+      , Control.Monad.Except
+
       -- network
       , Network.Socket
       , Network.Socket.ByteString
