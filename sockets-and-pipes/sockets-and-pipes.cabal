@@ -16,8 +16,6 @@ description:
     This package re-exports from all the libraries mentioned in
     /Sockets and Pipes/ (available on <https://leanpub.com/sockets-and-pipes Leanpub>).
 
-    Please read the "SocketsAndPipes.Syllabus".
-
     This release is for the sixth draft of the book, released September 2022.
 
 source-repository head
@@ -26,10 +24,6 @@ source-repository head
 
 library
     default-language: Haskell2010
-    default-extensions: NoImplicitPrelude
-    ghc-options: -Wall -fno-warn-unused-imports
-    hs-source-dirs: src
-    exposed-modules: SocketsAndPipes.Syllabus
 
     build-depends:
       , ascii ^>= 1.5.4
